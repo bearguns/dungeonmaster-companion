@@ -124,3 +124,6 @@ class Player(models.Model):
         default=False,
         blank=True
     )
+
+    def __str__(self):
+        return self.char_name
