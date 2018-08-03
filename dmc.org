@@ -1,0 +1,22 @@
+* Dungeon Master's Companion
+
+A web app for managing D&D campaigns and play sessions.
+
+** Models
+*** Campaign
+Top-level object, campaigns are a collection of play sessions and players that combine to track
+the playthrough experience of a full D&D campaign or adventure.
+
+**** Fields
+- name: Charfield
+- start_date: DateField
+- campaign_notes: TextField
+- completed: Boolean
+- completed_date: DateField
+
+*** Session
+- name
+- date
+- campaign
+- notes
+- current_objective
