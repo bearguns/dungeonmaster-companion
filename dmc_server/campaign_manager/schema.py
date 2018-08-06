@@ -29,6 +29,7 @@ class Query(object):
     campaign = graphene.Field(CampaignType,
                               id=graphene.Int(),
                               name=graphene.String())
+
     campaigns = graphene.List(CampaignType)
 
     def resolve_campaigns(self, info, **kwargs):
