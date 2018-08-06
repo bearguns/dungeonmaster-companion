@@ -10,6 +10,8 @@ pylint = "*"
 django = "*"
 graphene = ">=2.0"
 graphene-django = "*"
+"psycopg2" = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.6.4"

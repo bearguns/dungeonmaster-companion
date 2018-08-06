@@ -127,3 +127,30 @@ class Player(models.Model):
 
     def __str__(self):
         return self.char_name
+
+class Encounter(models.Model):
+    name = models.CharField(max_length=200)
+    trigger = models.TextField()
+    rewards = models.TextField(blank=True)
+    description = models.TextField()
+    session = models.ForeignKey(
+        Session,
+        related_name='encounters',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.name
+
+class Monster(models.Model):
+    name = models.CharField(max_length=64)
+    hit_points = models.IntegerField()
+    url = models.URLField()
+    encounters = models.ForeignKey(
+        Encounter,
+        related_name='monsters',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.name
