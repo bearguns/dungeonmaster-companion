@@ -1,27 +1,15 @@
 <template>
   <div id="app">
     <div id="nav">
+      <router-link to="/campaigns">Campaigns</router-link>
+      <router-link to="/sessions">Session Manager</router-link>
     </div>
-    <ul>
-      <li v-for="campaign in campaigns" :key="campaign.id">{{campaign.name}}</li>
-    </ul>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import gql from "graphql-tag";
-export default {
-  apollo: {
-    campaigns: gql`
-      {
-        campaigns {
-          id
-          name
-        }
-      }
-    `
-  }
-};
+export default {};
 </script>
 
 <style>
@@ -34,6 +22,9 @@ export default {
 }
 #nav {
   padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 #nav a {

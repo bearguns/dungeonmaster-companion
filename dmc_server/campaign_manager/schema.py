@@ -36,7 +36,11 @@ class Query(object):
         return Campaign.objects.all()
 
     def resolve_campaign(self, info, **kwargs):
+        id = kwargs.get('id')
         name = kwargs.get('name')
+
+        if id is not None:
+            return Campaign.objects.get(id=id)
 
         if name is not None:
             return Campaign.objects.get(name=name)
