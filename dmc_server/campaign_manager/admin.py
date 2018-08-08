@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from .models import Campaign, Session, Player, Encounter, Monster
 
-class SessionInline(admin.TabularInline):
+class SessionInline(admin.StackedInline):
     model = Session
 
 class CampaignAdmin(admin.ModelAdmin):
@@ -11,7 +11,7 @@ class CampaignAdmin(admin.ModelAdmin):
         SessionInline,
     ]
 
-class EncounterInline(admin.TabularInline):
+class EncounterInline(admin.StackedInline):
     model = Encounter
 
 class SessionAdmin(admin.ModelAdmin):

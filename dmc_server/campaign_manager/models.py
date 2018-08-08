@@ -133,6 +133,8 @@ class Encounter(models.Model):
     trigger = models.TextField()
     rewards = models.TextField(blank=True)
     description = models.TextField()
+    completed = models.BooleanField(blank=True)
+    skipped = models.BooleanField(blank=True)
     session = models.ForeignKey(
         Session,
         related_name='encounters',
