@@ -20,3 +20,14 @@ the playthrough experience of a full D&D campaign or adventure.
 - campaign
 - notes
 - current_objective
+
+** GOALS
+
+*** August 9, 2018:
+**** DONE List all sessions on a campaign in the UI
+**** DONE Refactor the CSS a little
+**** DONE Show session details and render markdown of session notes
+**** DONE Format and display the session date in local time
+**** TODO Create a reusable "Add [CAMPAIGN | SESSION | ENCOUNTER]" Chip component
+     This should have a little plus sign, be the same size and shape as other chips, and
+should bring up the appropriate form when clicking.

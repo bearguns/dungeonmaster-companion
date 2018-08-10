@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>{{ campaign.name }}</h2>
-    <SessionList :sessions="campaign.sessions" />
+    <h2>{{campaignName}}</h2>
+    <SessionList :sessions="sessionList" />
   </div>
 </template>
 
@@ -23,11 +23,23 @@ export default {
              id
              sessionName
              startDate
+             sessionNotes
            }
          }
        }
 
      `
+  },
+  computed: {
+    campaignName() {
+      return (this.campaign && this.campaign.name) || "";
+    },
+    sessionList() {
+      if (!this.campaign) {
+        return [];
+      }
+      return this.campaign.sessions;
+    }
   }
 };
 </script>

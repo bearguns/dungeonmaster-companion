@@ -1,0 +1,19 @@
+.chip {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 140px;
+    height: 180px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid wheat;
+}
+
+.chip-title {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.chip-subtitle {
+    margin-top: auto;
+}
