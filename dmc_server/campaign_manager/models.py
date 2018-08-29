@@ -4,7 +4,7 @@ from django.db import models
 class Campaign(models.Model):
     name = models.CharField(max_length=200)
     start_date = models.DateField()
-    campaign_notes = models.TextField(blank=True)
+    notes = models.TextField(blank=True)
     completed = models.BooleanField(
         default=False,
         blank=True
@@ -19,12 +19,13 @@ class Campaign(models.Model):
 
 class Session(models.Model):
     start_date = models.DateTimeField()
-    session_name = models.CharField(
+    completed = models.BooleanField(default=False,blank=True)
+    name = models.CharField(
         blank=False,
         max_length=200,
         default=f'{datetime.date.today()}'
     )
-    session_notes = models.TextField()
+    notes = models.TextField()
     campaign = models.ForeignKey(
         Campaign,
         related_name='sessions',
@@ -36,7 +37,7 @@ class Session(models.Model):
     )
 
     def __str__(self):
-        return self.session_name
+        return self.name
 
 class Player(models.Model):
     campaign = models.ForeignKey(
@@ -129,10 +130,25 @@ class Player(models.Model):
         return self.char_name
 
 class Encounter(models.Model):
+    COMBAT = 'combat'
+    DIALOG = 'dialog'
+    RANDOM = 'random'
+
+    ENCOUNTER_TYPES = (
+        (COMBAT, COMBAT),
+        (DIALOG, DIALOG),
+        (RANDOM, RANDOM)
+    )
+
     name = models.CharField(max_length=200)
+    encounter_type = models.CharField(
+        max_length=34,
+        choices=ENCOUNTER_TYPES,
+        default=COMBAT,
+    )
     trigger = models.TextField()
-    rewards = models.TextField(blank=True)
     description = models.TextField()
+    rewards = models.TextField(blank=True)
     completed = models.BooleanField(blank=True)
     skipped = models.BooleanField(blank=True)
     session = models.ForeignKey(

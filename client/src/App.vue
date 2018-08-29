@@ -1,40 +1,33 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/campaigns">Campaigns</router-link>
-      <router-link to="/sessions">Session Manager</router-link>
-    </div>
-    <router-view></router-view>
-  </div>
+<div id="app">
+  <menu-bar></menu-bar>
+  <router-view></router-view>
+  <dice-tray />
+</div>
 </template>
 
 <script>
-import "./app.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-export default {};
-</script>
+import "./assets/css/app.css";
+import MenuBar from "./components/MenuBar.vue";
+import DiceTray from "./components/DiceTray.vue";
 
+export default {
+  name: "App",
+  components: {
+    MenuBar,
+    DiceTray
+  },
+  computed: {
+    activeLink() {
+      return this.$route.path;
+    }
+  }
+};
+</script>
 <style>
 #app {
-  padding: 55px;
-}
-#nav {
-  padding: 30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-a {
-  text-decoration: none;
+  width: 100%;
+  height: 95vh;
+  margin: 0 auto;
 }
 </style>

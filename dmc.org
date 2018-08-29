@@ -22,12 +22,95 @@ the playthrough experience of a full D&D campaign or adventure.
 - current_objective
 
 ** GOALS
+**** TODO Create a reusable "Add [CAMPAIGN | SESSION | ENCOUNTER]" Chip component
+     This should have a little plus sign, be the same size and shape as other chips, and
+should bring up the appropriate form when clicking.
 
 *** August 9, 2018:
 **** DONE List all sessions on a campaign in the UI
 **** DONE Refactor the CSS a little
 **** DONE Show session details and render markdown of session notes
 **** DONE Format and display the session date in local time
-**** TODO Create a reusable "Add [CAMPAIGN | SESSION | ENCOUNTER]" Chip component
-     This should have a little plus sign, be the same size and shape as other chips, and
-should bring up the appropriate form when clicking.
+
+* Description
+
+** User Stories
+
+** Data Models
+*** Session
+- start_date
+- name
+- players[]
+  - table with player info
+  - should be able to add conditions to player(s)
+  - available on linked campaign object
+- encounters[]
+- active_encounter
+- notes(Markdown)
+- dice tray (persists on side of app)
+- quick_encounter
+  - click to create random/one-off encounter, quickly import monsters and control combat
+
+*** Encounter
+- name
+- reward
+- trigger
+- description
+- type [combat | dialog | quest]
+- completed(boolean)
+- monsters(Monster)
+
+*** Combat
+- monsters[]
+- initiative
+  - list of monsters + players in order of initiative rolls_
+
+** Stream August 23, 2018
+*** DONE update gql schema w/ new model changes
+*** DONE start Django server
+*** DONE create test session & encounters
+
+* Todos
+** General
+*** DONE remove notes widget from session
+*** TODO store UI windows in state
+*** TODO store open UI windows in state
+*** TODO store active campaign in state
+*** TODO store active session in state
+*** TODO setup webpack aliases i.e. '@components' etc.
+*** TODO add "activeCampaign" field to Campaign model.
+
+** Menu Bar
+*** DONE make menu bar full-width
+*** TODO can click on skull menu
+*** TODO create a skull-menu active CSS class
+*** TODO create dropdown menu
+*** TODO add buttons to open windows on desktop from menu bar
+** Widgets
+*** DONE create an Active Encounter window
+*** DONE create encounter list window
+*** DONE make player list items link to character sheets on DND Beyond
+*** TODO can edit name or roll in initiative sheet
+*** TODO encounter UI mutates GraphQL/Django state
+** Windows & UI
+*** DONE add depth effect to windows
+*** DONE layout main window w/ CSS grid
+*** DONE create a window css class
+    - window component w/window title
+    - active window CSS class
+    - BG window (default) css class
+*** DONE create a window component with slot(s) for content
+    - all instances of window should have a window title, and window body w/ consistent padding.
+    - slot for window content inside the window body.
+
+** Dice Rolling
+*** TODO create a dice tray component
+*** TODO create dice rolling class w/ methods for rolling appropriate dice
+*** TODO allow passing of multiples of dice i.e. '3d8'
+** Models
+*** TODO add location field to Encounter
+*** TODO
+
+* Notes
+** Questions from chat
+*** DONE respond to ywnklme's question

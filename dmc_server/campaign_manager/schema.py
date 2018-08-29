@@ -3,11 +3,9 @@ from graphene_django.types import DjangoObjectType
 
 from campaign_manager.models import Campaign, Session, Player, Encounter, Monster
 
-
 class CampaignType(DjangoObjectType):
     class Meta:
         model = Campaign
-
 
 class SessionType(DjangoObjectType):
     class Meta:
@@ -29,8 +27,8 @@ class Query(object):
     campaign = graphene.Field(CampaignType,
                               id=graphene.Int(),
                               name=graphene.String())
-
     campaigns = graphene.List(CampaignType)
+    session = graphene.Field(SessionType, id=graphene.Int(), name=graphene.String())
 
     def resolve_campaigns(self, info, **kwargs):
         return Campaign.objects.all()
@@ -46,6 +44,13 @@ class Query(object):
             return Campaign.objects.get(name=name)
 
         return None
+    def resolve_session(self, info, **kwargs):
+        id = kwargs.get('id')
+        name = kwargs.get('name')
+        if id is not None:
+            return Session.objects.get(id=id)
+        if name is not None:
+            return Session.objects.get(name=name)
 
     def resolve_all_related_sessions(self, info, **kwargs):
         # We can easily optimize query count in the resolve method
